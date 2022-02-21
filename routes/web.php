@@ -7,7 +7,10 @@ use App\Http\Controllers\Adm\DashboardController;
 use App\Http\Controllers\Adm\OrderController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\RatingController;
+use App\Http\Controllers\Front\ReviewController;
 use App\Http\Controllers\Front\UserController;
+use App\Http\Controllers\Front\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +35,17 @@ Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
 Auth::routes();
+
+
+Route::get('load-cart-data', [CartController::class, 'cartcount']);
+Route::get('load-wishlist-count', [WishlistController::class, 'wishlistcount']);
+
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
 Route::post('delete-cart-item', [CartController::class, 'deleteproduct']);
 Route::post('update-cart', [CartController::class, 'updatecart']);
+
+Route::post('add-to-wishlist', [WishlistController::class, 'add']);
+Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
@@ -43,6 +54,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'view']);
+
+    Route::post('add-rating', [RatingController::class, 'add']);
+
+    Route::get('add-review/{product_slug}/userreview', [ReviewController::class, 'add']);
+    Route::post('add-review', [ReviewController::class, 'create']);
+    Route::get('edit-review/{product_slug}/userreview', [ReviewController::class, 'edit']);
+    Route::put('update-review', [ReviewController::class, 'update']);
+
+    Route::get('wishlist', [WishlistController::class, 'index']);
+
+    Route::post('proceed-to-pay', [CheckoutController::class, 'razorpaycheck']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
