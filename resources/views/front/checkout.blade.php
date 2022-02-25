@@ -177,8 +177,10 @@
                                     'payment_id':details.id,
                                 },
                                 success: function(response) {
-                                    swal(response.status);
-                                    window.location.href = "/my-orders";
+                                    swal(response.status)
+                                    .then((value) => {
+                                        window.location.href = "/my-orders";
+                                    });
                                 }
                             });
                 });

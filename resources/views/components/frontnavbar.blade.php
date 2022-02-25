@@ -1,6 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand {{ Request::is('/') ? 'active':'' }}" href="{{ url('/') }}">Halo Indonesia</a>
+      <div class="search-bar">
+        <form action="{{ url('searchproduct') }}" method="POST">
+          @csrf
+      <div class="input-group">
+        <input type="search" class="form-control" id="search_product" name="product_name" placeholder="Search Products" required aria-describedby="basic-addon1">
+        <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+    </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

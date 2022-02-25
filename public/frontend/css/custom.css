@@ -34,6 +34,11 @@
     padding: 5px;
 }
 
+.search-bar {
+    width: 40%;
+    margin-left: 10%;
+}
+
 /* rating */
 .rating-css div {
     color: #ffe400;

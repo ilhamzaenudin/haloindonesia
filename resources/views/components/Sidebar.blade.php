@@ -5,8 +5,8 @@
         <img src="{{ asset('img/logohaloindonesia.png') }}" class="ms-4 navbar-brand-img" style="width: 130px" alt="main_logo">
       </a>
     </div>
-    <hr class="horizontal light mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+    <hr>
+    <div>
       <ul class="navbar-nav">
         <li class="nav-item" >
           <a class="nav-link text-white {{ Request::is('dashboard') ? 'active':'' }}" href="{{ url('dashboard') }}">

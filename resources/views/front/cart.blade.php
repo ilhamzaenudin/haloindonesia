@@ -17,7 +17,7 @@
 </div>
 
     <div class="container">
-        <div class="card shadow">
+        <div class="card shadow cartitems">
             @if($cartitems->count() > 0)
             <div class="card-body">
                 @php $total = 0; @endphp
